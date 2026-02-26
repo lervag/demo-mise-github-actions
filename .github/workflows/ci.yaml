@@ -14,12 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - uses: jdx/mise-action@v3
+        env:
+          MISE_ENV: "ci"
         with:
           install: true      # [default: true]  run `mise install`
           cache: true        # [default: true]  cache mise using GitHub's cache
           experimental: true # [default: false] enable experimental features
           # automatically write this mise.toml file
-          mise_toml: |
-            [tools]
-            cowsay = "latest"
-      - run: cowsay "Using cowsay from mise"
+      - run: cowsay "Using cowsay from mise.ci.toml"
